@@ -3,4 +3,7 @@ version: '1.0.0'
 main: me.wyzebb.hungerMaster.HungerMaster
 api-version: '1.21'
 authors: [ Wyzebb ]
-description: A plugin to add high customisability to a typical /feed command
+description: A plugin to add high customisability to a typical /food command
+commands:
+  food:
+    description: Changes a player's hunger
