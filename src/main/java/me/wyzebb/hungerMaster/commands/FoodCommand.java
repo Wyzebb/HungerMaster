@@ -4,9 +4,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
-public class FoodCommand implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class FoodCommand implements CommandExecutor, TabExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
 
@@ -87,5 +92,35 @@ public class FoodCommand implements CommandExecutor {
         }
 
         return food;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] args) {
+        if (args.length == 1) {
+            return Arrays.asList("add", "sub", "set");
+        } else if (args.length == 2) {
+            return new ArrayList<>() {};
+        } else if (args.length == 3) {
+            ArrayList<String> playerNames = new ArrayList<>();
+            Player[] players = new Player[Bukkit.getServer().getOnlinePlayers().toArray().length];
+            Bukkit.getServer().getOnlinePlayers().toArray(players);
+
+            if (args[2].isEmpty()) {
+                for (Player player : players) {
+                    playerNames.add(player.getName());
+                }
+
+            } else {
+                for (Player player : players) {
+                    if (player.getName().toLowerCase().startsWith(args[2].toLowerCase())) {
+                        playerNames.add(player.getName());
+                    }
+                }
+
+            }
+
+            return playerNames;
+        }
+        return new ArrayList<>() {};
     }
 }

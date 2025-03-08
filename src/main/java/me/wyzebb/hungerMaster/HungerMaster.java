@@ -8,6 +8,7 @@ public final class HungerMaster extends JavaPlugin {
     @Override
     public void onEnable() {
         getCommand("food").setExecutor(new FoodCommand());
+        getCommand("food").setTabCompleter(new FoodCommand());
     }
 
     @Override
