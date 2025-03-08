@@ -1,0 +1,6 @@
+name: HungerMaster
+version: '1.0.0'
+main: me.wyzebb.hungerMaster.HungerMaster
+api-version: '1.21'
+authors: [ Wyzebb ]
+description: A plugin to add high customisability to a typical /feed command
