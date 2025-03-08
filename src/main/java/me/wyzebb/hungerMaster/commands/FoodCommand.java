@@ -22,7 +22,7 @@ public class FoodCommand implements CommandExecutor {
                     target = player;
                 } else {
                     commandSender.sendMessage("§cYou must specify a player!");
-                    target = null;
+                    return true;
                 }
             } else {
                 target = Bukkit.getPlayer(args[2]);
@@ -70,6 +70,7 @@ public class FoodCommand implements CommandExecutor {
                 }
             } else {
                 commandSender.sendMessage("§cInvalid subcommand. Use add, sub or set!");
+                return true;
             }
         }
 
