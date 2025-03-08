@@ -78,6 +78,14 @@ public class FoodCommand implements CommandExecutor {
     }
 
     private int clampFood(int food) {
-        return Math.clamp(food, 0, 20);
+        if (food > 20) {
+            return 20;
+        }
+
+        if (food < 0) {
+            return 0;
+        }
+
+        return food;
     }
 }
